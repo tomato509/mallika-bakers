@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title id="titleText"></title>
+
+<style>
+  body { margin:0; font-family: Arial; background:#f5f5f5; }
+  header { background:#222; color:white; text-align:center; padding:20px; }
+  nav { background:#444; text-align:center; }
+  nav a { color:white; padding:14px; display:inline-block; text-decoration:none; }
+  nav a:hover { background:#666; }
+  .hero { color:white; text-align:center; padding:100px 20px; background-size:cover; }
+  .section { padding:40px; text-align:center; }
+  .services { display:flex; flex-wrap:wrap; justify-content:center; }
+  .card { background:white; margin:10px; padding:20px; width:250px; border-radius:10px; }
+  footer { background:#222; color:white; text-align:center; padding:15px; }
+  @media(max-width:600px){ .services{flex-direction:column;} }
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1 id="businessName"></h1>
+  <p id="slogan"></p>
+</header>
+
+<nav>
+  <a href="#">Home</a>
+  <a href="#services">Services</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section class="hero" id="hero">
+  <h2 id="welcomeText"></h2>
+  <p id="subText"></p>
+</section>
+
+<section id="services" class="section">
+  <h2>Our Services</h2>
+  <div class="services" id="servicesList"></div>
+</section>
+
+<section id="contact" class="section">
+  <h2>Contact Us</h2>
+  <p id="phone"></p>
+  <p id="email"></p>
+</section>
+
+<footer>
+  <p id="footerText"></p>
+</footer>
+
+<script>
+/* ====== 🔥 EDIT ONLY THIS PART ====== */
+
+const data = {
+  name: "Mallika Bakers",
+  slogan: "Best bread in town",
+  welcome: "Welcome to Mallika Bakers",
+  sub: "Fresh bread straight from the source",
+  phone: "📞 0781234567",
+  email: "📧 mallikabakers@email.com",
+  bg: "https://images.unsplash.com/photo-1608198093002-ad4e005484ec",
+
+  services: [
+    { title: "Fresh Bread", desc: "Baked daily with high quality ingredients" },
+    { title: "Custom Cakes", desc: "Beautiful cakes for birthdays and events" },
+    { title: "Pastries", desc: "Delicious snacks and sweets" }
+  ]
+};
+
+/* ====== DON'T TOUCH BELOW ====== */
+
+document.getElementById("titleText").innerText = data.name;
+document.getElementById("businessName").innerText = data.name;
+document.getElementById("slogan").innerText = data.slogan;
+document.getElementById("welcomeText").innerText = data.welcome;
+document.getElementById("subText").innerText = data.sub;
+document.getElementById("phone").innerText = data.phone;
+document.getElementById("email").innerText = data.email;
+document.getElementById("footerText").innerText = "© 2026 " + data.name;
+document.getElementById("hero").style.backgroundImage = `url('${data.bg}')`;
+
+const servicesDiv = document.getElementById("servicesList");
+data.services.forEach(s => {
+  servicesDiv.innerHTML += `
+    <div class="card">
+      <h3>${s.title}</h3>
+      <p>${s.desc}</p>
+    </div>
+  `;
+});
+</script>
+
+</body>
+</html>
